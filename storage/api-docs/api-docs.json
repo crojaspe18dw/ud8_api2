@@ -1,0 +1,167 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Productos",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000"
+        }
+    ],
+    "paths": {
+        "/api/productos": {
+            "get": {
+                "summary": "Mostrar productos",
+                "operationId": "App\\Http\\Controllers\\ControladorDeProductos::index",
+                "responses": {
+                    "200": {
+                        "description": "Mostrar todos los productos."
+                    },
+                    "default": {
+                        "description": "Ha ocurrido un error."
+                    }
+                }
+            }
+        },
+        "/posts": {
+            "post": {
+                "summary": "crear nuevo producto",
+                "description": "nuevo producto",
+                "operationId": "App\\Http\\Controllers\\ControladorDeProductos::store",
+                "responses": {
+                    "200": {
+                        "description": "The Post resource created",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        },
+        "/api/productos/{id}": {
+            "get": {
+                "tags": [
+                    "Productos"
+                ],
+                "summary": "obtener un producto segun el id que se le pase por parametro",
+                "description": "obtener un producto segun su id",
+                "operationId": "App\\Http\\Controllers\\ControladorDeProductos::show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "el id del producto",
+                        "required": true,
+                        "schema": {
+                            "description": "identificador unico del producto",
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "devuelve un producto",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthenticated.",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "an \"unexpected\" error",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "productos"
+                ],
+                "summary": "actualizar productos",
+                "description": "actualiza un producto segun el id que se le pase por url",
+                "operationId": "App\\Http\\Controllers\\ControladorDeProductos::update",
+                "responses": {
+                    "200": {
+                        "description": "producto actualizado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "no autenticado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "error inesperado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "productos"
+                ],
+                "summary": "borrar productos",
+                "description": "borrar un producto de la base de datos segun el id que se ha pasado por la url como parametro",
+                "operationId": "App\\Http\\Controllers\\ControladorDeProductos::destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "el id del producto",
+                        "required": true,
+                        "schema": {
+                            "description": "identificador unico del producto",
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "el producto ha sido borrado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "401": {
+                        "description": "sin autentificar",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "default": {
+                        "description": "un error inesperado",
+                        "content": {
+                            "application/json": {}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
