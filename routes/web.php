@@ -17,3 +17,6 @@ Route::get('/', function () {
 
 
 
+Route::resource('git','controladorparalaapi');
+
+
